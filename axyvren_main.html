@@ -336,7 +336,127 @@
   .team-text .live-pill i { width: 10px; height: 10px; border-radius: 50%; background: #e8ebf1; box-shadow: 0 0 10px #e8ebf1; animation: pulse 2s infinite; }
   @media (max-width: 1000px) { .team-row { grid-template-columns: 1fr; gap: 36px; } .team-row.flip .team-img { order: 0; } .team-img { height: 480px; } .team-img img { width: 100%; } }
 
-  /* ---------- Responsive ---------- */
+  /* ---------- Scroll manifesto + white zone ---------- */
+  .mf { height: 420vh; position: relative; background: #000; }
+  .mf-stick { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .mf-layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 6%; }
+  .mf-small { justify-content: flex-start; padding-top: 18vh; }
+  .mf-small p { max-width: 820px; font-size: clamp(16px, 2vw, 24px); color: var(--muted); line-height: 1.5; }
+  .sw { display: inline-block; opacity: 0; margin-right: .25em; will-change: transform, opacity; }
+  .mf-layer h2 { font-size: clamp(44px, 8vw, 120px); font-weight: 800; letter-spacing: -0.03em; line-height: .95; text-transform: uppercase; color: #f2f3f7; }
+  .mf-layer .ln { display: block; opacity: 0; will-change: transform, opacity; }
+  .mf-wipe { background: #e8ebf1; clip-path: circle(0% at 50% 50%); }
+  .mf-wipe h2 { color: #0a0a0c; }
+
+  /* white zone: everything below the manifesto turns white with black text */
+  .light-zone { transition: background-color .9s ease, color .9s ease; }
+  .light-zone * { transition-property: color, background-color, border-color, box-shadow, opacity; transition-duration: .9s; transition-timing-function: ease; }
+  .light-zone.is-light { background: #e8ebf1; color: #0a0a0c; }
+  .light-zone.is-light p, .light-zone.is-light li, .light-zone.is-light .section-sub, .light-zone.is-light .label { color: #3c404a; }
+  .light-zone.is-light [style*="color"] { color: #3c404a !important; }
+  .light-zone.is-light h2, .light-zone.is-light h3, .light-zone.is-light h4, .light-zone.is-light .section-title, .light-zone.is-light .gradient-text, .light-zone.is-light .counter b { color: #0a0a0c; }
+  .light-zone.is-light .eyebrow { color: #0a0a0c; border-color: rgba(10,10,12,.3); background: rgba(10,10,12,.05); }
+  .light-zone.is-light .eyebrow::before { background: #0a0a0c; box-shadow: none; }
+  .light-zone.is-light .card { background: #f7f8fa; border-color: rgba(10,10,12,.12); }
+  .light-zone.is-light .card::before { background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(10,10,12,.5), transparent 40%); }
+  .light-zone.is-light .card:hover { background: #ffffff; border-color: #0a0a0c; }
+  .light-zone.is-light .icon-box { background: #0a0a0c; border-color: #0a0a0c; }
+  .light-zone.is-light .svg-icon { stroke: #ffffff; }
+  .light-zone.is-light .card:hover .icon-box { background: #000; }
+  .light-zone.is-light .link-more { color: #0a0a0c; }
+  .light-zone.is-light .pill { color: #0a0a0c; border-color: rgba(10,10,12,.25); background: rgba(10,10,12,.03); }
+  .light-zone.is-light .pill.active { background: #0a0a0c; color: #ffffff; border-color: #0a0a0c; box-shadow: none; }
+  .light-zone.is-light .pill.linked { background: rgba(10,10,12,.1); color: #0a0a0c; border-color: #0a0a0c; }
+  .light-zone.is-light .eco-panel { background: #f7f8fa; border-color: rgba(10,10,12,.12); }
+  .light-zone.is-light .eco-panel .links span { color: #0a0a0c; border-color: rgba(10,10,12,.3); }
+  .light-zone.is-light .project { background: #f7f8fa; }
+  .light-zone.is-light .project .thumb { background: #ececf0; border-bottom-color: rgba(10,10,12,.1); }
+  .light-zone.is-light .project small { color: #0a0a0c; }
+  .light-zone.is-light .progress { background: rgba(10,10,12,.12); }
+  .light-zone.is-light .progress i { background: #0a0a0c; }
+  .light-zone.is-light .ctrl { color: #0a0a0c; border-color: rgba(10,10,12,.3); }
+  .light-zone.is-light .ctrl:hover { background: #0a0a0c; color: #ffffff; border-color: #0a0a0c; }
+  .light-zone.is-light .qa { background: #f7f8fa; border-color: rgba(10,10,12,.12); }
+  .light-zone.is-light .qa:hover { border-color: rgba(10,10,12,.4); }
+  .light-zone.is-light .qa button, .light-zone.is-light .qa .plus { color: #0a0a0c; }
+  .light-zone.is-light .cta-box { background: #f7f8fa; border-color: rgba(10,10,12,.15); }
+  .light-zone.is-light .cta-ring { border-color: rgba(10,10,12,.12); }
+  .light-zone.is-light .btn-primary { background: #0a0a0c; color: #ffffff; box-shadow: none; }
+  .light-zone.is-light .btn-primary:hover { background: #22252d; color: #ffffff; animation: none; box-shadow: 0 10px 30px -12px rgba(0,0,0,.5); }
+  .light-zone.is-light .btn-ghost { color: #0a0a0c; border-color: rgba(10,10,12,.3); background: rgba(10,10,12,.04); }
+  .light-zone.is-light .btn-ghost:hover { color: #000; border-color: #000; background: rgba(10,10,12,.08); animation: none; box-shadow: none; }
+  .light-zone.is-light .btn::after { background: linear-gradient(120deg, transparent, rgba(0,0,0,.15), transparent); }
+  .light-zone.is-light .big-word { -webkit-text-stroke-color: rgba(10,10,12,.35); }
+  .light-zone.is-light .big-word:hover { color: rgba(10,10,12,.06); -webkit-text-stroke-color: #0a0a0c; }
+  .light-zone.is-light .stat { border-left-color: rgba(10,10,12,.4); }
+  .light-zone.is-light footer { background: #e8ebf1; border-color: rgba(10,10,12,.12); }
+  .light-zone.is-light footer h4 { color: #0a0a0c; }
+  .light-zone.is-light .footer-bottom { border-color: rgba(10,10,12,.12); color: #4b4f5a; }
+  .light-zone.is-light .socials a { color: #0a0a0c; border-color: rgba(10,10,12,.2); }
+  .light-zone.is-light .socials a:hover { color: #ffffff; background: #0a0a0c; border-color: #0a0a0c; }
+
+/* ---------- White section fixes ---------- */
+  .light-zone.is-light, .light-zone.is-light section, .light-zone.is-light footer, .light-zone.is-light .container { background-color: #e8ebf1; }
+  .cur-dot, .cur-ring { mix-blend-mode: difference; }
+  .cur-dot { background: #ffffff; }
+  .cur-ring { border-color: rgba(255,255,255,0.85); }
+  .cur-ring.hover { background: rgba(255,255,255,0.12); border-color: #ffffff; }
+
+/* ---------- Full white page + hover animations on white ---------- */
+  html.is-light, html.is-light body { background: #e8ebf1 !important; background-image: none !important; transition: background-color .9s ease; }
+  @keyframes darkText { 0%,100% { color: #0a0a0c; } 50% { color: #5a5f6b; } }
+  @keyframes darkBorder { 0%,100% { border-color: #0a0a0c; } 50% { border-color: #5a5f6b; } }
+  @keyframes darkSweep { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+  .light-zone.is-light .btn-primary:hover { background: linear-gradient(110deg, #2a2d35 0%, #0a0a0c 25%, #4a4f5c 50%, #0a0a0c 75%, #2a2d35 100%); background-size: 300% 100%; animation: darkSweep 2.2s linear infinite; color: #ffffff; box-shadow: 0 0 26px rgba(10,10,12,.35); }
+  .light-zone.is-light .btn-ghost:hover { color: #0a0a0c; background: rgba(10,10,12,.08); box-shadow: 0 0 22px rgba(10,10,12,.15); animation: darkBorder 2s ease infinite; }
+  .light-zone.is-light .link-more:hover, .light-zone.is-light .card:hover .link-more, .light-zone.is-light .stat:hover .num, .light-zone.is-light .qa button:hover, .light-zone.is-light .project:hover .body h3 { animation: darkText 1.6s ease infinite; }
+  .light-zone.is-light footer li:hover { color: #0a0a0c; text-shadow: none; }
+  .light-zone.is-light .tag:hover, .light-zone.is-light .card:hover .tag { background: #0a0a0c; color: #ffffff; border-color: #0a0a0c; }
+  .light-zone.is-light .pill:hover { color: #0a0a0c; border-color: #0a0a0c; }
+  .light-zone.is-light .socials a:hover { color: #ffffff; background: #0a0a0c; border-color: #0a0a0c; box-shadow: 0 0 18px rgba(10,10,12,.3); }
+
+/* ---------- Manifesto: remove inherited section padding (fixes black band) ---------- */
+  section.mf { padding: 0; }
+
+/* ---------- Navbar stays dark over white section ---------- */
+  .nav.scrolled { background: #000000; border-bottom-color: rgba(255,255,255,0.08); }
+
+/* ---------- Footer wordmark: solid fill (no overlapping outline lines) ---------- */
+  .big-word, .big-word:hover {
+    -webkit-text-stroke: 0; color: transparent !important; text-shadow: none; animation: none;
+    background: linear-gradient(180deg, #ffffff 0%, #c9ced8 55%, #6b7080 100%);
+    -webkit-background-clip: text; background-clip: text;
+    filter: drop-shadow(0 0 18px rgba(220,225,235,0.22));
+  }
+  .light-zone.is-light .big-word, .light-zone.is-light .big-word:hover {
+    background: linear-gradient(180deg, #0a0a0c 0%, #2a2d35 60%, #4a4f5c 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent !important;
+    filter: none;
+  }
+
+/* ---------- White section buttons: silver hover with dark text (never black) ---------- */
+  .light-zone.is-light .btn-primary:hover {
+    background: linear-gradient(110deg, #7b818c 0%, #ffffff 25%, #c9ced8 50%, #ffffff 75%, #7b818c 100%);
+    background-size: 300% 100%; animation: silverSweep 2.2s linear infinite;
+    color: #0a0a0c !important; box-shadow: 0 0 24px rgba(10,10,12,.22);
+  }
+  .light-zone.is-light .btn-ghost:hover {
+    color: #0a0a0c !important; background: rgba(10,10,12,.12); border-color: #0a0a0c;
+    animation: none; box-shadow: 0 0 18px rgba(10,10,12,.15);
+  }
+
+/* ---------- Footer link hover: slide + underline + color (black and white sections) ---------- */
+  footer li { position: relative; display: block; width: fit-content; cursor: pointer; transition: transform .35s cubic-bezier(.2,.8,.2,1), color .35s ease; }
+  footer li::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: currentColor; transition: width .4s cubic-bezier(.2,.8,.2,1); }
+  footer li:hover { transform: translateX(10px); color: #ffffff; text-shadow: 0 0 12px rgba(232,235,241,0.45); }
+  footer li:hover::after { width: 100%; }
+  .light-zone footer li { transition: transform .35s cubic-bezier(.2,.8,.2,1), color .35s ease; }
+  .light-zone.is-light footer li:hover { color: #0a0a0c; text-shadow: none; }
+
+/* ---------- Footer links are real links ---------- */
+  footer li a { color: inherit; display: block; }
+
+/* ---------- Responsive ---------- */
   @media (max-width: 1000px) {
     .hero-grid, .about-grid, .eco { grid-template-columns: 1fr; }
     .hero-visual { height: 420px; order: -1; }
@@ -571,6 +691,17 @@
   </div>
 </section>
 
+<!-- ================= SCROLL MANIFESTO ================= -->
+<section class="mf" id="manifesto">
+  <div class="mf-stick">
+    <div class="mf-layer mf-small"><p id="mfSmallP">A website is no longer just a page online. It is how customers find, trust, and choose you.</p></div>
+    <div class="mf-layer" id="mfL2"><h2><span class="ln">Design, build,</span><span class="ln">rank, and grow.</span></h2></div>
+    <div class="mf-layer" id="mfL3"><h2><span class="ln">Now, let's</span><span class="ln">build yours.</span></h2></div>
+    <div class="mf-layer mf-wipe" id="mfWipe"><h2><span class="ln">Everything,</span><span class="ln">connected.</span></h2></div>
+  </div>
+</section>
+
+<div class="light-zone" id="lightZone">
 <!-- ================= ECOSYSTEM (hover to connect) ================= -->
 <section id="ecosystem">
   <div class="container">
@@ -725,14 +856,15 @@
         <p>Web development and SEO services that help brands grow with fast, scalable, future-ready websites.</p>
         <div class="socials"><a href="#">f</a><a href="#">X</a><a href="#">in</a><a href="#">ig</a></div>
       </div>
-      <div><h4>Quick Links</h4><ul><li>Home</li><li>About</li><li>Services</li><li>Portfolio</li><li>Contact</li></ul></div>
-      <div><h4>Our Services</h4><ul><li>Web Development</li><li>UI / UX Design</li><li>E-commerce Stores</li><li>SEO Optimization</li><li>Maintenance &amp; Support</li></ul></div>
-      <div><h4>Contact</h4><ul><li>hello@axyvren.com</li><li>+92 000 0000000</li><li>Karachi, Pakistan</li></ul></div>
+      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Our Services</h4><ul><li><a href="#services">Web Development</a></li><li><a href="#services">UI / UX Design</a></li><li><a href="#services">E-commerce Stores</a></li><li><a href="#services">SEO Optimization</a></li><li><a href="#services">Maintenance &amp; Support</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:hello@axyvren.com">hello@axyvren.com</a></li><li><a href="tel:+920000000000">+92 000 0000000</a></li><li><span>Karachi, Pakistan</span></li></ul></div>
     </div>
     <div class="big-word" aria-hidden="true">AXYVREN</div>
     <div class="footer-bottom"><span>© 2026 AXYVREN. All rights reserved.</span><span>Privacy Policy · Terms of Service</span></div>
   </div>
 </footer>
+</div>
 
 <script>
 // ---------- Intro sequence: logo -> AXYVREN -> zoom -> site ----------
@@ -770,7 +902,7 @@ document.querySelectorAll('.split').forEach(el => {
 // ---------- Scroll reveal, steps, counters ----------
 const counted = new WeakSet();
 function runCounter(el) {
-  if (counted.has(el)) return; counted.add(el);
+  if (!el.dataset.target || counted.has(el)) return; counted.add(el);
   const target = +el.dataset.target, start = performance.now(), dur = 1600;
   (function tick(now) {
     const p = Math.min((now - start) / dur, 1);
@@ -848,11 +980,11 @@ const track = document.getElementById('track');
 const projects = track.querySelectorAll('.project');
 const total = projects.length;
 document.getElementById('tot').textContent = String(total).padStart(2, '0');
-function cardStep() { return projects[0].offsetWidth + 22; }
+function cardStep() { return (projects[0].offsetWidth || 380) + 22; }
 function updateCarousel() {
   const max = track.scrollWidth - track.clientWidth;
-  const idx = Math.round(track.scrollLeft / cardStep());
-  document.getElementById('cur').textContent = String(Math.min(idx + 1, total)).padStart(2, '0');
+  const idx = Math.round((track.scrollLeft || 0) / cardStep());
+  document.getElementById('cur').textContent = String(Math.max(1, Math.min(idx + 1, total))).padStart(2, '0');
   const pct = max > 0 ? (track.scrollLeft / max) : 0;
   const bar = document.getElementById('bar');
   bar.style.width = (100 / total) + '%';
@@ -884,6 +1016,59 @@ document.querySelectorAll('.qa').forEach(q => {
   if (q.classList.contains('open')) setH();
 });
 
+// ---------- Scroll manifesto + white zone (scroll-driven) ----------
+(function manifesto() {
+  const sec = document.getElementById('manifesto');
+  if (!sec) return;
+  const zone = document.getElementById('lightZone');
+  const smallP = document.getElementById('mfSmallP');
+  smallP.innerHTML = smallP.textContent.trim().split(/\s+/).map(w => `<span class="sw">${w}</span>`).join(' ');
+  const sws = [...smallP.querySelectorAll('.sw')];
+  const L2 = [...document.querySelectorAll('#mfL2 .ln')];
+  const L3 = [...document.querySelectorAll('#mfL3 .ln')];
+  const WL = [...document.querySelectorAll('#mfWipe .ln')];
+  const wipe = document.getElementById('mfWipe');
+  const seg = (p, a, b) => Math.min(1, Math.max(0, (p - a) / (b - a)));
+  const ease = t => t * t * (3 - 2 * t);
+  function lines(els, ins, outs, p) {
+    els.forEach((el, i) => {
+      const iv = ease(seg(p, ins[i][0], ins[i][1]));
+      const ov = outs ? ease(seg(p, outs[i][0], outs[i][1])) : 0;
+      el.style.opacity = iv * (1 - ov);
+      el.style.transform = `translateY(${(1 - iv) * 50 - ov * 30}px)`;
+    });
+  }
+  let lightOn = false, ticking = false;
+  function update() {
+    ticking = false;
+    const r = sec.getBoundingClientRect();
+    const total = sec.offsetHeight - window.innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    // words appear one after another with a gap
+    sws.forEach((w, k) => {
+      const a = 0.02 + k * (0.13 / sws.length);
+      const v = ease(seg(p, a, a + 0.05));
+      w.style.opacity = v;
+      w.style.transform = `translateY(${(1 - v) * 12}px)`;
+    });
+    // line 1 then line 2, each with its own time
+    lines(L2, [[0.2, 0.27], [0.32, 0.39]], [[0.48, 0.53], [0.5, 0.56]], p);
+    lines(L3, [[0.6, 0.67], [0.7, 0.77]], [[0.82, 0.86], [0.84, 0.88]], p);
+    // white circle expands to cover the whole screen
+    const w = ease(seg(p, 0.88, 0.98));
+    wipe.style.clipPath = `circle(${w * 80}% at 50% 50%)`;
+    lines(WL, [[0.94, 0.97], [0.96, 0.99]], null, p);
+    // everything below turns white, and closes again when scrolling back up
+    if (!lightOn && p >= 0.97) { lightOn = true; zone.classList.add('is-light'); document.documentElement.classList.add('is-light'); }
+    else if (lightOn && p < 0.9) { lightOn = false; zone.classList.remove('is-light'); document.documentElement.classList.remove('is-light'); }
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
 // ---------- Circle cursor ----------
 (function cursor() {
   if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -891,7 +1076,7 @@ document.querySelectorAll('.qa').forEach(q => {
   let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, hover = false;
   window.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; dot.style.opacity = 1; ring.style.opacity = 1; });
   document.addEventListener('mouseleave', () => { dot.style.opacity = 0; ring.style.opacity = 0; });
-  document.addEventListener('mouseover', e => { hover = !!e.target.closest('a, button, .card, .btn, .pill'); ring.classList.toggle('hover', hover); });
+  document.addEventListener('mouseover', e => { hover = !!e.target.closest('a, button, .card, .btn, .pill, footer li'); ring.classList.toggle('hover', hover); });
   (function loop() {
     rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
     ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) scale(${hover ? 1.8 : 1})`;
